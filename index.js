@@ -36,7 +36,7 @@ bot.on("ready", async () => {
 client.on('ready', async () => {
     console.log('I am ready!');
 
-    client.user.setPresence({ game: { name: 'Horror Magasin', type: 2 } });
+client.user.setGame(`1help,Wk`,)
 });
 	/*try {
 		let link = await bot.generateInvite(["ADMINISTRATOR"]);
@@ -48,8 +48,9 @@ client.on('ready', async () => {
 });
 
 
-const adminprefix = "!";
-const devs = ['379767821611171851','431150885549113344'];
+
+const adminprefix = "4";
+const devs = ['333604437442560000','431150885549113344'];
 bot.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -73,6 +74,11 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 
 });
+
+//bot.on('ready',async () => { 
+//bot.channels.find(ch => ch.id === "491344449234927626" && ch.type === 'voice').join();
+ //});
+
 
 bot.on("message", async message => {
 	if (message.author.bot) return;
@@ -191,7 +197,7 @@ if (queue.length === 0) { // if there are no songs in the queue, send message th
 } else if (args.length > 0 && args[0] == 'remove') { // if arguments are provided and first one is remove
 	if (args.length == 2 && args[1] <= queue.length) { // check if there are no more than 2 arguments and that second one is in range of songs number in queue
 		// then remove selected song from the queue
-		message.reply(`**${songsQueue[args[1] - 1]}** has been removed from the queue. Type !queue to see the current queue.`);
+		message.reply(`**${songsQueue[args[1] - 1]}** has been removed from the queue. Type 4queue to see the current queue.`);
 		queue.splice(args[1] - 1, 1);
 		songsQueue.splice(args[1] - 1, 1);
 	} else { // if there are more than 2 arguments and the second one is not in the range of songs number in queue, send message
@@ -204,13 +210,13 @@ if (queue.length === 0) { // if there are no songs in the queue, send message th
 		queue.splice(1);
 		songsQueue.splice(1);
 	} else {
-		message.reply("**You need to type !queue clear without following arguments.**");
+		message.reply("**You need to type 4queue clear without following arguments.**");
 	}
 } else if (args.length > 0 && args[0] == 'shuffle') {
 	let tempA = [songsQueue[0]];
 	let tempB = songsQueue.slice(1);
 	songsQueue = tempA.concat(shuffle(tempB));
-	message.channel.send("Queue has been shuffled. Type !queue to see the new queue!");
+	message.channel.send("Queue has been shuffled. Type 4queue to see the new queue!");
 } else { // if there are songs in the queue and queue commands is without arguments display current queue
 	let format = "```"
 	for (const songName in songsQueue) {
@@ -259,7 +265,7 @@ if (args.length == 0) {
 .addField("4:", "```" + ytResults[3] + "```")
 .addField("5:", "```" + ytResults[4] + "```")
 .addBlankField()
-.setFooter("Send !add [result number] to queue the song.");
+.setFooter("Send 4add [result number] to queue the song.");
 		message.channel.send(ytEmbed);
 		youtubeSearched = true;
 	}).catch(err => console.log(err));
@@ -306,29 +312,19 @@ break;
 message.channel.send(`
 #User
 **${prefix}userinfo** [Username or blank] : displays info for the selected user or for message sender if arguments are not provided
-
 #Music
 **${prefix}play** [Song Name Or Blank]": Plays a Song Or if Arguments are Not Provided Plays The First Song in The Queue
-
 **${prefix}skip** : Skips The Current Song
-
 **${prefix}queue** : displays Current Queue
-
 **${prefix}queue remove** [Song Number] : Removes Chosen Song From The Queue
-
 **${prefix}queue clear**: Removes All Songs From The Queue
-
 **${prefix}queue shuffle** : Shuffles The Current Queue
-
 **${prefix}repeat**: Plays Current Song Again
-
 **${prefix}stop** : Stops Playing Music And Deletes All Songs in The Queue
-
 **${prefix}yt** [Search Term] : Searches The YouTube and Returns First 5 Results
-
 **${prefix}add** [Search Result Number] : adds a Song From YouTube Search To The Queue
-
 **${prefix}vol** [percentage] : Sets The Volume of The Music To Given Percentage
+**Onwer Bot** : <@333604437442560000> <:Harder:522884683898290176>
 `);
 break;
 
@@ -336,28 +332,17 @@ break;
 message.channel.send(`
 #User
 **${prefix}userinfo** [Username or blank] : displays info for the selected user or for message sender if arguments are not provided
-
 #Music
 **${prefix}play** [Song Name Or Blank]": Plays a Song Or if Arguments are Not Provided Plays The First Song in The Queue
-
 **${prefix}skip** : Skips The Current Song
-
 **${prefix}queue** : displays Current Queue
-
 **${prefix}queue remove** [Song Number] : Removes Chosen Song From The Queue
-
 **${prefix}queue clear**: Removes All Songs From The Queue
-
 **${prefix}queue shuffle** : Shuffles The Current Queue
-
 **${prefix}repeat**: Plays Current Song Again
-
 **${prefix}stop** : Stops Playing Music And Deletes All Songs in The Queue
-
 **${prefix}yt** [Search Term] : Searches The YouTube and Returns First 5 Results
-
 **${prefix}add** [Search Result Number] : adds a Song From YouTube Search To The Queue
-
 **${prefix}vol** [percentage] : Sets The Volume of The Music To Given Percentage
 `);
 break;
